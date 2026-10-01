@@ -1,81 +1,102 @@
-<!DOCTYPE html>
-<html lang="ru"><head><meta charset="utf-8">
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Дневник</title>
+<meta name="theme-color" content="#12213f">
+<title>Kundalik</title>
 <style>
-:root{--bg:#fff;--s1:#f3f3f8;--tx:#1c1b22;--mu:#6b6a78;--p:#534AB7;--t:#e4e2fb;--ok:#0f6e56;--wa:#a35b00;--dg:#b3261e;--bd:#e2e1ea;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
-@media(prefers-color-scheme:dark){:root{--bg:#17161c;--s1:#23222b;--tx:#efeef5;--mu:#a3a2b0;--t:#3a3670;--ok:#5dcaa5;--wa:#f0b35a;--dg:#f09a94;--bd:#33323d}}
-html,body{margin:0}
-body{background:var(--bg);color:var(--tx);font:15px/1.4 system-ui,sans-serif}
-#app{max-width:480px;margin:0 auto;padding:12px 12px 90px}
-button,select{font:inherit;color:var(--tx);background:var(--s1);border:1px solid var(--bd);border-radius:10px;padding:8px}
-.on{background:var(--p)!important;color:#fff!important;border-color:transparent!important}
-.hero{background:var(--p);color:#fff;border-radius:18px;padding:16px}
-.hero small{color:rgba(255,255,255,.8);font-size:12px}
-.chip{background:rgba(255,255,255,.2);border-radius:10px;padding:3px 10px;font-size:12px;margin-right:6px;display:inline-block}
-.cd{background:var(--s1);border-radius:12px;padding:10px}
-.gd{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.gd b{font-size:24px;font-weight:600}
-.cp{font-size:12px;color:var(--mu)}
-.h{font-size:13px;font-weight:600;margin:16px 0 8px}
-b.ok{color:var(--ok)}b.wa{color:var(--wa)}b.dg{color:var(--dg)}
-.pt{display:flex;gap:6px;margin:12px 0 10px}.pt button{flex:1}
-.ch{display:flex;align-items:flex-end;gap:4px;height:56px}
-.ch i{flex:1;background:var(--t);border-radius:4px}
-.ch i:last-child{background:var(--p)}
-.lb{display:flex;gap:4px}
-.lb span{flex:1;text-align:center;font-size:11px;color:var(--mu)}
-.rw{display:flex;align-items:center;gap:6px;padding:8px 0;border-bottom:1px solid var(--bd)}
-.rw:last-child{border:0}
-.gb{width:36px;height:36px;padding:0;font-weight:600}
-.g5{color:var(--ok)}.g4{color:#3b82d6}.g3{color:var(--wa)}.g2{color:var(--dg)}
-.al{border-radius:12px;padding:10px;margin-top:10px;font-size:13px;background:var(--s1);border-left:4px solid var(--dg)}
-#nav{position:fixed;left:0;right:0;bottom:0;display:flex;gap:6px;padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--bd)}
-#nav button{flex:1;padding:10px 0}
-</style></head><body>
-<div id="app"></div>
-<div id="nav"><button data-r="s">Студент</button><button data-r="p">Родитель</button><button data-r="t">Учитель</button></div>
+*{box-sizing:border-box} :root{--ink:#172033;--muted:#7c899e;--line:#e2e8f0;--bg:#f7f9fc;--blue:#397edf;--purple:#7362ef;--green:#21936b;--red:#d45d58;--orange:#d48235}
+html,body{margin:0;min-height:100%;font-family:Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}
+#app{min-height:100vh;max-width:480px;margin:auto;background:linear-gradient(180deg,#edf4ff 0,#f8fafc 34%);position:relative;overflow-x:hidden}
+.login{min-height:100vh;padding:calc(24px + env(safe-area-inset-top)) 24px 32px;color:#fff;background:radial-gradient(circle at 95% 0,#6957e9 0,transparent 31%),linear-gradient(155deg,#142546,#0b1429 65%,#080f1e)}
+.brand{display:flex;align-items:center;gap:12px;margin-top:34px}.logo{width:48px;height:48px;border-radius:15px;background:linear-gradient(145deg,#4e9cff,#806cff);display:grid;place-items:center;font-size:25px;box-shadow:0 12px 32px #315ad45e}.brand b{font-size:29px}
+.auth-title{margin:56px 0 8px;font-size:29px}.auth-sub{margin:0;color:#aebbd0;font-size:14px;line-height:1.5}.form{margin-top:32px}.form label{display:block;margin:0 0 8px;color:#cbd5e6;font-size:13px;font-weight:700}
+.field{width:100%;height:57px;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:rgba(255,255,255,.07);padding:0 16px;margin-bottom:18px;color:#fff;outline:none}.field::placeholder{color:#7f8da5}.field:focus{border-color:#6da8ff}
+.auth-btn{width:100%;height:57px;border:0;border-radius:17px;color:#fff;background:linear-gradient(100deg,#469aff,#806cff);font-weight:800;box-shadow:0 15px 30px #3f63df4a}.link-btn{border:0;background:none;color:#79adff;padding:3px}.auth-bottom{text-align:center;color:#8d9ab0;font-size:13px;margin-top:24px}.auth-bottom .link-btn{font-weight:700}
+.demo{margin-top:25px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12)}.demo p{font-size:12px;color:#8390a6;text-align:center}.demo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.demo button{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#dce6f6;border-radius:13px;padding:10px 4px;font-size:11px}
+.top{padding:calc(22px + env(safe-area-inset-top)) 22px 13px;display:flex;justify-content:space-between;align-items:center}.hello{font-size:13px;color:#738098;margin-bottom:4px}.name{font-size:23px;font-weight:800}.avatar{width:48px;height:48px;border-radius:16px;background:linear-gradient(145deg,#4f9cff,#7d6cff);display:grid;place-items:center;color:#fff;font-size:18px;font-weight:800;box-shadow:0 9px 22px #5677d545}.date{margin:0 22px;color:#627089;font-size:13px}
+.content{height:calc(100vh - 90px);overflow-y:auto;padding-bottom:32px;scrollbar-width:none}.content::-webkit-scrollbar{display:none}.hero{margin:20px 22px 0;padding:19px;border-radius:22px;color:#fff;background:linear-gradient(125deg,#266fd4,#735de9);box-shadow:0 14px 30px #405fc73b}.hero.green{background:linear-gradient(125deg,#178a72,#43b888);box-shadow:0 14px 30px #178a7235}.hero-top{display:flex;justify-content:space-between;align-items:start}.tiny{font-size:12px;opacity:.8}.big{font-size:22px;font-weight:800;margin-top:6px}.badge{padding:8px 10px;border-radius:12px;background:#ffffff2b;font-size:11px;font-weight:700}.ring{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;border:7px solid #ffffff3d;border-top-color:#fff;font-size:12px;font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:18px;padding-top:15px;border-top:1px solid #ffffff38}.stat b{font-size:18px}.stat span{display:block;font-size:10px;opacity:.75;margin-top:4px}
+.section{margin:22px 22px 0}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.section-head b{font-size:17px}.section-head button{border:0;background:none;color:var(--blue);font-size:12px}.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.action{min-height:88px;background:#fff;border:1px solid var(--line);border-radius:17px;padding:13px 7px;text-align:center;font-size:11px;font-weight:700}.action i{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;margin:0 auto 9px;font-style:normal;font-size:17px;background:#e5f1ff;color:#347edb}.action.green i{background:#e6f7ef;color:#24936b}.action.orange i{background:#fff0df;color:#c9742c}
+.row{display:grid;grid-template-columns:46px 1fr auto;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);padding:11px;border-radius:17px;margin-bottom:9px}.row-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-weight:800;background:#e5f1ff;color:#347edb}.row b{font-size:14px}.row small{display:block;color:#8691a4;margin-top:5px}.right{font-size:11px;color:#637189;font-weight:700}.pill{padding:7px 9px;border-radius:10px;font-size:10px;font-weight:800;min-width:62px;text-align:center}.p-green{color:#16825c;background:#e4f6ed}.p-red{color:#c7504b;background:#fce9e7}.p-orange{color:#b56725;background:#fff0df}.p-blue{color:#3477c7;background:#e5f1ff}
+.nav{position:fixed;z-index:20;bottom:calc(12px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(calc(100% - 32px),448px);height:66px;border:1px solid #e5e9f0;background:#fffffff2;border-radius:22px;display:grid;grid-template-columns:repeat(4,1fr);box-shadow:0 12px 28px #24344e18;backdrop-filter:blur(15px)}.nav button{border:0;background:none;color:#8994a7;font-size:10px;display:grid;place-items:center;align-content:center;gap:4px}.nav i{font-style:normal;font-size:18px}.nav .active{color:var(--blue);font-weight:800}
+.page-head{padding:calc(20px + env(safe-area-inset-top)) 22px 12px;display:flex;align-items:center;justify-content:space-between}.page-head h1{font-size:22px;margin:0}.page-head p{font-size:12px;color:var(--muted);margin:4px 0 0}.circle-btn{width:42px;height:42px;border:0;border-radius:14px;color:#fff;background:linear-gradient(145deg,#4f9cff,#7668f0);font-size:22px;box-shadow:0 8px 20px #506fd33d}.back{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}.search{height:50px;margin:5px 22px 19px;padding:0 15px;border-radius:16px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;gap:9px;color:#8b96a8;font-size:13px}
+.class-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:12px}.class-top{display:grid;grid-template-columns:52px 1fr auto;gap:13px;align-items:center}.class-icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-weight:800;background:#e3efff;color:#2f78d5}.class-card h3{font-size:15px;margin:0 0 5px}.class-card p{font-size:12px;color:#8792a5;margin:0}.bar{height:7px;background:#edf0f5;border-radius:10px;margin-top:15px;overflow:hidden}.bar i{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,#4295f6,#6d66ed)}.meta{display:flex;justify-content:space-between;font-size:10px;color:#8490a4;margin-top:7px}
+.att-summary{margin:5px 22px 19px;padding:15px;border-radius:19px;background:linear-gradient(125deg,#266fd4,#735de9);color:#fff}.counts{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:13px}.count{background:#ffffff20;border-radius:12px;text-align:center;padding:9px 2px}.count strong{display:block;font-size:17px}.count small{font-size:9px;opacity:.8}.date-chip{margin:0 22px 14px;height:45px;border-radius:15px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:12px}.save{color:var(--blue);font-weight:800;border:0;background:none}
+.student{display:grid;grid-template-columns:45px 1fr auto;gap:11px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:17px;padding:10px 11px;margin-bottom:9px}.student .avatar{width:45px;height:45px;border-radius:14px;box-shadow:none}.student b{font-size:13px}.student small{display:block;margin-top:4px;color:#8792a5;font-size:11px}.status-select{border:0;border-radius:10px;padding:7px 6px;font-size:10px;font-weight:800;background:#e4f6ed;color:#16825c;max-width:83px}
+.empty{margin:40px 22px;text-align:center;color:var(--muted)}.empty i{font-style:normal;font-size:40px;display:block;margin-bottom:12px}.logout{margin:18px 22px;width:calc(100% - 44px);height:50px;border:1px solid #f2c7c4;color:var(--red);background:#fff;border-radius:16px;font-weight:800}
+.modal{position:fixed;z-index:50;inset:0;background:#0a1123a8;display:grid;align-items:end}.sheet{width:min(100%,480px);margin:auto;background:#fff;border-radius:26px 26px 0 0;padding:22px 22px calc(25px + env(safe-area-inset-bottom));box-shadow:0 -20px 50px #0c17343d}.sheet h2{margin:0 0 18px}.sheet input,.sheet select{width:100%;height:50px;border:1px solid var(--line);border-radius:14px;padding:0 13px;margin-bottom:12px;background:#f8fafc}.sheet-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sheet-actions button{height:50px;border-radius:14px;border:1px solid var(--line);background:#fff;font-weight:800}.sheet-actions .ok{border:0;color:#fff;background:linear-gradient(100deg,#469aff,#806cff)}.hidden{display:none!important}.toast{position:fixed;z-index:80;top:20px;left:50%;transform:translateX(-50%);background:#172033;color:#fff;padding:11px 16px;border-radius:13px;font-size:12px;box-shadow:0 10px 30px #0003}
+</style>
+</head>
+<body><div id="app"></div>
 <script>
-var K='dnevnik1',DAY=864e5,N=['Алишер','Мадина','Тимур'],SB=['Математика','Физика','Английский','История'];
-var P={w:{n:7,l:1,t:'Неделя'},m:{n:4,l:7.5,t:'Месяц'},y:{n:12,l:30,t:'Год'}};
-var st={r:'s',c:0,p:'w',j:0},G=null;
-try{G=JSON.parse(localStorage.getItem(K))}catch(e){}
-if(!G){G=[];for(var i=0;i<3;i++)for(var k=0;k<365;k++)if(Math.random()<.3)G.push({s:i,j:Math.floor(Math.random()*4),v:[3,4,4,5,5][Math.floor(Math.random()*5)],d:Date.now()-k*DAY});save()}
-function save(){try{localStorage.setItem(K,JSON.stringify(G))}catch(e){}}
-function fl(i,a,b,j){var now=Date.now();return G.filter(function(x){var g=(now-x.d)/DAY;return x.s===i&&g>=a&&g<b&&(j===undefined||x.j===j)})}
-function av(a){return a.length?a.reduce(function(s,x){return s+x.v},0)/a.length:0}
-function f1(n){return n?n.toFixed(1):'–'}
-function cl(n){return n>=4.5?'ok':n>=3.5?'wa':'dg'}
-function lab(i){var p=P[st.p],d=new Date(Date.now()-i*p.l*DAY);return st.p==='w'?d.toLocaleDateString('ru',{weekday:'short'}):st.p==='m'?'Н'+(p.n-i):d.toLocaleDateString('ru',{month:'short'})}
-function streak(c){var d={};G.forEach(function(x){if(x.s===c)d[Math.floor((Date.now()-x.d)/DAY)]=1});var k=d[0]?0:1,n=0;while(d[k]){n++;k++}return n}
-function ring(p,t){var c=2*Math.PI*21;return '<div style="position:relative;width:56px;height:56px"><svg width="56" height="56" viewBox="0 0 52 52"><circle cx="26" cy="26" r="21" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="5"/><circle cx="26" cy="26" r="21" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-dasharray="'+(c*p/100)+' '+c+'" transform="rotate(-90 26 26)"/></svg><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600">'+t+'</span></div>'}
-function sel(l){return '<div style="margin-bottom:10px">'+l+' <select id="cs">'+N.map(function(n,i){return '<option value="'+i+'"'+(i===st.c?' selected':'')+'>'+n+'</option>'}).join('')+'</select></div>'}
-function pt(){return '<div class="pt">'+['w','m','y'].map(function(k){return '<button data-p="'+k+'"'+(k===st.p?' class="on"':'')+'>'+P[k].t+'</button>'}).join('')+'</div>'}
-function stuV(){var c=st.c,p=P[st.p],b='',lb='',rg=p.n*p.l;
-for(var i=p.n-1;i>=0;i--){b+='<i style="height:'+Math.max(2,Math.round(av(fl(c,i*p.l,(i+1)*p.l))/5*54))+'px"></i>';lb+='<span>'+lab(i)+'</span>'}
-var tot=G.filter(function(x){return x.s===c}).reduce(function(s,x){return s+x.v},0),lv=Math.floor(tot/100)+1;
-var tl=SB.map(function(s,j){var a=av(fl(c,0,rg,j));return '<div class="cd"><div class="cp">'+s+'</div><b class="'+cl(a)+'">'+f1(a)+'</b></div>'}).join('');
-var top=N.map(function(n,i){return {n:n,i:i,k:fl(i,0,7).length}}).sort(function(a,b){return b.k-a.k}).map(function(x,r){return '<div class="cd" style="flex:1;text-align:center'+(x.i===c?';outline:2px solid var(--p)':'')+'"><b>'+x.n+'</b><div class="cp">'+(r+1)+' место · '+x.k+' оц.</div></div>'}).join('');
-return sel('Я:')+'<div class="hero"><div style="display:flex;justify-content:space-between;align-items:center"><div><small>Средний балл · '+p.t.toLowerCase()+'</small><div style="font-size:32px;font-weight:600">'+f1(av(fl(c,0,rg)))+'</div></div>'+ring(tot%100,'Ур. '+lv)+'</div><div style="margin-top:10px"><span class="chip">🔥 '+streak(c)+' дн.</span><span class="chip">⭐ '+tot+' XP</span></div></div>'
-+pt()+'<div class="ch">'+b+'</div><div class="lb">'+lb+'</div><div class="h">Предметы</div><div class="gd">'+tl+'</div><div class="h">Топ недели</div><div style="display:flex;gap:8px">'+top+'</div>'}
-function parV(){var c=st.c,a=av(fl(c,0,7)),b=av(fl(c,7,14)),d=a&&b?a-b:0;
-var last=G.filter(function(x){return x.s===c}).sort(function(x,y){return y.d-x.d}).slice(0,6);
-var bad=last.filter(function(x){return x.v<=3&&Date.now()-x.d<3*DAY})[0];
-return sel('Ребёнок:')+'<div class="hero"><small>'+N[c]+' · за неделю</small><div style="font-size:32px;font-weight:600">'+f1(a)+'</div><span class="chip">'+(d>=0?'+':'')+d.toFixed(1)+' к прошлой неделе</span></div>'
-+(bad?'<div class="al">Новая низкая оценка: '+SB[bad.j]+' — '+bad.v+'</div>':'')
-+'<div class="h">Последние оценки</div><div class="cd">'+last.map(function(x){return '<div class="rw"><div style="flex:1">'+SB[x.j]+'<div class="cp">'+new Date(x.d).toLocaleDateString('ru')+'</div></div><b class="'+cl(x.v)+'" style="font-size:18px">'+x.v+'</b></div>'}).join('')+'</div>'}
-function teaV(){var j=st.j;
-var rows=N.map(function(n,i){var a=fl(i,0,30,j),l=a.slice().sort(function(x,y){return y.d-x.d})[0];return '<div class="rw"><div style="flex:1"><b>'+n+'</b><div class="cp">средний '+f1(av(a))+(l?' · последняя '+l.v:'')+'</div></div>'+[2,3,4,5].map(function(v){return '<button class="gb g'+v+'" data-a="'+i+'-'+v+'">'+v+'</button>'}).join('')+'</div>'}).join('');
-var risk=N.map(function(n,i){return {n:n,a:av(fl(i,0,14))}}).filter(function(x){return x.a&&x.a<3.8});
-return '<div style="margin-bottom:10px">Предмет: <select id="js">'+SB.map(function(s,k){return '<option value="'+k+'"'+(k===j?' selected':'')+'>'+s+'</option>'}).join('')+'</select></div>'
-+'<div class="hero"><small>Класс 9А · '+SB[j]+' · за 30 дней</small><div style="font-size:28px;font-weight:600">'+f1(av(G.filter(function(x){return x.j===j&&Date.now()-x.d<30*DAY})))+'</div><span class="chip">'+N.length+' ученика</span></div>'
-+'<div class="h">Быстрая оценка: нажмите цифру</div><div class="cd">'+rows+'</div>'
-+risk.map(function(x){return '<div class="al">В зоне риска: '+x.n+' — '+f1(x.a)+'</div>'}).join('')
-+'<div class="h">Лучшие за неделю</div><div class="cd">'+N.map(function(n,i){return {n:n,k:fl(i,0,7).length}}).sort(function(a,b){return b.k-a.k}).map(function(x,r){return '<div class="rw"><div style="flex:1">'+(r+1)+'. '+x.n+'</div><span class="cp">'+x.k+' оценок</span></div>'}).join('')+'</div>'}
-function render(){document.getElementById('app').innerHTML=st.r==='s'?stuV():st.r==='p'?parV():teaV();
-[].forEach.call(document.querySelectorAll('#nav button'),function(b){b.classList.toggle('on',b.dataset.r===st.r)})}
-document.addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;
-if(t.dataset.r)st.r=t.dataset.r;else if(t.dataset.p)st.p=t.dataset.p;else if(t.dataset.a){var q=t.dataset.a.split('-');G.push({s:+q[0],j:st.j,v:+q[1],d:Date.now()});save()}else return;render()});
-document.addEventListener('change',function(e){if(e.target.id==='cs')st.c=+e.target.value;else if(e.target.id==='js')st.j=+e.target.value;else return;render()});
+const DB='kundalik_demo_v3';
+const seed={
+ users:[
+  {login:'student@kundalik.uz',pass:'1234',name:"O‘quvchi 1",role:'student'},
+  {login:'teacher@kundalik.uz',pass:'1234',name:"O‘qituvchi 1",role:'teacher'},
+  {login:'parent@kundalik.uz',pass:'1234',name:'Ota-ona',role:'parent'}
+ ],
+ students:Array.from({length:10},(_,i)=>({id:i+1,name:`O‘quvchi ${i+1}`,status:['Keldi','Keldi','Kechikdi','Sababli','Keldi','Keldi','Kelmadi','Keldi','Keldi','Keldi'][i]}))
+};
+let data;try{data=JSON.parse(localStorage.getItem(DB))}catch(e){};if(!data){data=seed;save()}
+let session=JSON.parse(localStorage.getItem(DB+'_session')||'null');
+let view='home',authView='login',modal=null;
+const $=s=>document.querySelector(s);function save(){localStorage.setItem(DB,JSON.stringify(data))}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function toast(t){document.body.insertAdjacentHTML('beforeend',`<div class="toast">${esc(t)}</div>`);setTimeout(()=>$('.toast')?.remove(),1800)}
+function roleUz(r){return r==='student'?"O‘quvchi":r==='teacher'?"O‘qituvchi":'Ota-ona'}
+function loginPage(){
+ return `<main class="login"><div class="brand"><div class="logo">▣</div><b>Kundalik</b></div>
+ <h1 class="auth-title">${authView==='login'?'Hisobingizga kiring':"Ro‘yxatdan o‘ting"}</h1>
+ <p class="auth-sub">${authView==='login'?"Ta’lim jarayoningizni bir joyda boshqaring.":"Yangi hisob yaratib, Kundalikdan foydalaning."}</p>
+ <form class="form" id="authForm">
+ ${authView==='register'?`<label>Ism yoki nom</label><input class="field" name="name" placeholder="Ismingiz" required><label>Hisob turi</label><select class="field" name="role"><option value="student">O‘quvchi</option><option value="teacher">O‘qituvchi</option><option value="parent">Ota-ona</option></select>`:''}
+ <label>Telefon yoki elektron pochta</label><input class="field" name="login" type="text" placeholder="login@example.uz" required>
+ <label>Parol</label><input class="field" name="pass" type="password" placeholder="••••••••" required>
+ <button class="auth-btn">${authView==='login'?'Kirish →':'Hisob yaratish →'}</button></form>
+ <div class="auth-bottom">${authView==='login'?"Hisobingiz yo‘qmi?":"Hisobingiz bormi?"} <button class="link-btn" id="switchAuth">${authView==='login'?"Ro‘yxatdan o‘tish":"Kirish"}</button></div>
+ ${authView==='login'?`<div class="demo"><p>Sinash uchun demo hisoblar</p><div class="demo-grid"><button data-demo="student">O‘quvchi</button><button data-demo="teacher">O‘qituvchi</button><button data-demo="parent">Ota-ona</button></div><p>Parol: 1234</p></div>`:''}</main>`
+}
+function nav(active){return `<nav class="nav"><button data-view="home" class="${active==='home'?'active':''}"><i>⌂</i>Bosh sahifa</button><button data-view="${session.role==='teacher'?'classes':'results'}" class="${['classes','results'].includes(active)?'active':''}"><i>${session.role==='teacher'?'▦':'★'}</i>${session.role==='teacher'?'Sinflar':'Natijalar'}</button><button data-view="messages" class="${active==='messages'?'active':''}"><i>✉</i>Xabarlar</button><button data-view="profile" class="${active==='profile'?'active':''}"><i>●</i>Profil</button></nav>`}
+function headerTop(name,letter){return `<div class="top"><div><div class="hello">Xayrli tong 👋</div><div class="name">${esc(name)}</div></div><div class="avatar">${esc(letter)}</div></div><div class="date">30-sentabr, chorshanba</div>`}
+function studentHome(){return `<div class="content">${headerTop(session.name,'1')}<div class="hero"><div class="hero-top"><div><div class="tiny">Haftalik natija</div><div class="big">Ajoyib davom eting!</div></div><div class="ring">84%</div></div><div class="stats"><div class="stat"><b>18</b><span>Dars</span></div><div class="stat"><b>4.6</b><span>O‘rtacha baho</span></div><div class="stat"><b>96%</b><span>Davomat</span></div></div></div>
+ <section class="section"><div class="section-head"><b>Bugungi darslar</b><button>Barchasi</button></div><div class="row"><div class="row-icon">M</div><div><b>Matematika</b><small>12-xona • O‘qituvchi 1</small></div><div class="right">09:00</div></div><div class="row"><div class="row-icon" style="background:#fff0df;color:#c9742c">T</div><div><b>Tarix</b><small>8-xona • O‘qituvchi 2</small></div><div class="right">10:30</div></div></section>
+ <section class="section"><div class="section-head"><b>Tezkor bo‘limlar</b></div><div class="actions"><div class="action"><i>✓</i>Vazifalar</div><div class="action"><i>★</i>Baholar</div><div class="action"><i>▦</i>Jadval</div></div></section></div>${nav('home')}`}
+function teacherHome(){return `<div class="content">${headerTop(session.name,"O‘")}<div class="hero"><div class="hero-top"><div><div class="tiny">Bugungi darslar</div><div class="big">3 ta sinf kutmoqda</div></div><div class="badge">O‘qituvchi</div></div><div class="stats"><div class="stat"><b>${data.students.length}</b><span>O‘quvchi</span></div><div class="stat"><b>3</b><span>Sinf</span></div><div class="stat"><b>92%</b><span>Davomat</span></div></div></div>
+ <section class="section"><div class="section-head"><b>Tezkor amallar</b></div><div class="actions"><button class="action green" data-view="attendance"><i>✓</i>Davomat</button><div class="action"><i>★</i>Baho qo‘yish</div><div class="action orange"><i>＋</i>Vazifa berish</div></div></section>
+ <section class="section"><div class="section-head"><b>Keyingi darslar</b><button data-view="classes">Jadval</button></div>${classRows()}</section></div>${nav('home')}`}
+function parentHome(){return `<div class="content">${headerTop(session.name,'OO')}<div class="hero green"><div class="hero-top"><div><div class="tiny">O‘quvchi 1 • 7-“A”</div><div class="big">Maktabga keldi ✓</div></div><div class="badge">08:12</div></div><div class="stats"><div class="stat"><b>4.6</b><span>O‘rtacha baho</span></div><div class="stat"><b>96%</b><span>Davomat</span></div><div class="stat"><b>3</b><span>Yangi vazifa</span></div></div></div>
+ <section class="section"><div class="section-head"><b>Farzandim</b><button>Profil</button></div><div class="row"><div class="avatar" style="width:46px;height:46px;box-shadow:none">1</div><div><b>O‘quvchi 1</b><small>7-“A” sinf • ID 0001</small></div><span class="pill p-green">Faol</span></div></section>
+ <section class="section"><div class="section-head"><b>Bugungi holat</b></div><div class="actions"><div class="action green"><i>✓</i>Keldi</div><div class="action"><i>4.6</i>Baholar</div><div class="action orange"><i>3</i>Vazifalar</div></div></section>
+ <section class="section"><div class="section-head"><b>Yangiliklar</b><button>Barchasi</button></div><div class="row"><div class="row-icon">★</div><div><b>Yangi baho qo‘yildi</b><small>Matematika fanidan “5” baho</small></div></div><div class="row"><div class="row-icon" style="background:#fff0df;color:#c9742c">▣</div><div><b>Uy vazifasi</b><small>Tarix • topshirish muddati ertaga</small></div></div></section></div>${nav('home')}`}
+function classRows(){return `<div class="class-card" data-view="attendance"><div class="class-top"><div class="class-icon">7A</div><div><h3>7-“A” sinf</h3><p>${data.students.length} o‘quvchi • Matematika</p></div><b>›</b></div><div class="bar"><i style="width:92%"></i></div><div class="meta"><span>Davomat: 92%</span><span>09:00</span></div></div><div class="class-card"><div class="class-top"><div class="class-icon" style="background:#eee8ff;color:#7055d6">8B</div><div><h3>8-“B” sinf</h3><p>27 o‘quvchi • Matematika</p></div><b>›</b></div><div class="bar"><i style="width:85%;background:linear-gradient(90deg,#7b5ce1,#a389ff)"></i></div><div class="meta"><span>Davomat: 85%</span><span>10:30</span></div></div>`}
+function classes(){return `<div class="content"><div class="page-head"><div><h1>Mening sinflarim</h1><p>3 ta sinf • ${data.students.length+54} o‘quvchi</p></div><button class="circle-btn" data-modal="class">+</button></div><div class="search">⌕ Sinf yoki o‘quvchini qidirish</div><section class="section"><div class="section-head"><b>Bugungi sinflar</b><button>Jadval</button></div>${classRows()}<div class="class-card"><div class="class-top"><div class="class-icon" style="background:#fff0df;color:#c9742c">9A</div><div><h3>9-“A” sinf</h3><p>27 o‘quvchi • Matematika</p></div><b>›</b></div><div class="bar"><i style="width:78%;background:linear-gradient(90deg,#e58b3b,#f0b56e)"></i></div><div class="meta"><span>Davomat: 78%</span><span>13:00</span></div></div></section></div>${nav('classes')}`}
+function attendance(){
+ const c={Keldi:0,Kelmadi:0,Kechikdi:0,Sababli:0};data.students.forEach(s=>c[s.status]=(c[s.status]||0)+1);
+ return `<div class="content"><div class="page-head"><button class="circle-btn back" data-view="classes">‹</button><div style="text-align:center"><h1>7-“A” davomat</h1><p>Matematika • ${data.students.length} o‘quvchi</p></div><button class="circle-btn" data-modal="student">+</button></div>
+ <div class="att-summary"><b>Bugungi natija</b><div class="counts">${['Keldi','Kelmadi','Kechikdi','Sababli'].map(x=>`<div class="count"><strong>${c[x]||0}</strong><small>${x}</small></div>`).join('')}</div></div>
+ <div class="date-chip"><b>▣ 30-sentabr, 2026</b><button class="save" id="saveAttendance">Saqlash</button></div>
+ <section class="section" style="margin-top:0">${data.students.map((s,i)=>`<div class="student"><div class="avatar">${s.id}</div><div><b>${esc(s.name)}</b><small>ID ${String(s.id).padStart(4,'0')}</small></div><select class="status-select" data-student="${i}">${['Keldi','Kelmadi','Kechikdi','Sababli'].map(x=>`<option ${s.status===x?'selected':''}>${x}</option>`).join('')}</select></div>`).join('')}</section></div>${nav('classes')}`}
+function generic(title,icon,text,active){return `<div class="content"><div class="page-head"><div><h1>${title}</h1><p>Kundalik</p></div></div><div class="empty"><i>${icon}</i><b>${text}</b><p>Bu bo‘lim keyingi versiyada to‘liq ishlaydi.</p></div>${active==='profile'?`<button class="logout" id="logout">Hisobdan chiqish</button>`:''}</div>${nav(active)}`}
+function modalHtml(){if(!modal)return'';return `<div class="modal" id="modal"><div class="sheet"><h2>${modal==='student'?"O‘quvchi qo‘shish":"Yangi sinf"}</h2>${modal==='student'?`<input id="studentName" placeholder="O‘quvchi ismi"><select id="studentStatus"><option>Keldi</option><option>Kelmadi</option><option>Kechikdi</option><option>Sababli</option></select>`:`<input id="className" placeholder='Masalan: 10-“A”'><input placeholder="Fan nomi">`}<div class="sheet-actions"><button id="closeModal">Bekor qilish</button><button class="ok" id="confirmModal">Qo‘shish</button></div></div></div>`}
+function render(){
+ if(!session){$('#app').innerHTML=loginPage();return}
+ let html=view==='home'?(session.role==='student'?studentHome():session.role==='teacher'?teacherHome():parentHome()):view==='classes'?classes():view==='attendance'?attendance():view==='results'?generic('Natijalar','★','Baholar va natijalar','results'):view==='messages'?generic('Xabarlar','✉','Xabarlar hozircha bo‘sh','messages'):generic('Profil','●',`${esc(session.name)} • ${roleUz(session.role)}`,'profile');
+ $('#app').innerHTML=html+modalHtml()
+}
+document.addEventListener('click',e=>{
+ const demo=e.target.closest('[data-demo]');if(demo){const role=demo.dataset.demo;const u=data.users.find(x=>x.role===role);session={name:u.name,role:u.role,login:u.login};localStorage.setItem(DB+'_session',JSON.stringify(session));view='home';render();return}
+ if(e.target.id==='switchAuth'){authView=authView==='login'?'register':'login';render();return}
+ const v=e.target.closest('[data-view]');if(v){view=v.dataset.view;render();return}
+ const m=e.target.closest('[data-modal]');if(m){modal=m.dataset.modal;render();return}
+ if(e.target.id==='closeModal'||e.target.id==='modal'){modal=null;render();return}
+ if(e.target.id==='confirmModal'){if(modal==='student'){const n=$('#studentName').value.trim()||`O‘quvchi ${data.students.length+1}`;data.students.push({id:Math.max(0,...data.students.map(s=>s.id))+1,name:n,status:$('#studentStatus').value});save();toast("O‘quvchi qo‘shildi")}else toast("Sinf qo‘shildi");modal=null;render();return}
+ if(e.target.id==='saveAttendance'){save();toast('Davomat saqlandi');return}
+ if(e.target.id==='logout'){session=null;localStorage.removeItem(DB+'_session');view='home';render()}
+});
+document.addEventListener('change',e=>{if(e.target.matches('[data-student]')){data.students[+e.target.dataset.student].status=e.target.value;save();render()}});
+document.addEventListener('submit',e=>{if(e.target.id!=='authForm')return;e.preventDefault();const f=new FormData(e.target),login=f.get('login').trim(),pass=f.get('pass');if(authView==='register'){if(data.users.some(u=>u.login===login)){toast('Bu login band');return}const u={login,pass,name:f.get('name').trim(),role:f.get('role')};data.users.push(u);save();session={login:u.login,name:u.name,role:u.role};localStorage.setItem(DB+'_session',JSON.stringify(session));view='home';render()}else{const u=data.users.find(x=>x.login===login&&x.pass===pass);if(!u){toast('Login yoki parol noto‘g‘ri');return}session={login:u.login,name:u.name,role:u.role};localStorage.setItem(DB+'_session',JSON.stringify(session));view='home';render()}});
 render();
 </script></body></html>
